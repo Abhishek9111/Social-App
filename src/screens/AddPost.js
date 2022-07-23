@@ -55,6 +55,41 @@ const AddPost = ({navigation,userState})=>{
 
     const addPostTask = async()=>{
 
+        try {
+            
+            if (!location || !description || !image) {
+                return Snackbar.show({
+                    text:"Please add all fields",
+                    textColor: 'white',
+                    backgroundColor:'red'
+                })
+            } else {
+                
+                const uid = shortid.generate()
+                await database().ref(`/posts/${uid}`).set({
+                    location,
+                    description,
+                    picture: image,
+                    by: userState.name,
+                    date: Date.now(),
+                    socialId: userState.instaUsername,
+                    userImage: userState.image
+                })
+                
+                console.log("post added success")
+                navigation.navigate("Home")
+
+            }
+
+        } catch (error) {
+            console.log(error)
+            Snackbar.show({
+                text:"post upload failed",
+                textColor: 'white',
+                backgroundColor:'red'
+            })
+            
+        }
 
     }
     
