@@ -41,7 +41,7 @@ const SignUp = ({signUp})=>{
     )
 
     const [imageUploading,setImageUploading] = useState(false)
-    set[uploadStatus,setUploadStatus] = useState(null)
+    const [uploadStatus,setUploadStatus] = useState(null)
 
     const chooseImage = async()=>{
         ImagePicker.showImagePicker(options,(response)=>{
