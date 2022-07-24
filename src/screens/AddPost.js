@@ -73,7 +73,8 @@ const AddPost = ({navigation,userState})=>{
                     by: userState.name,
                     date: Date.now(),
                     socialId: userState.instaUsername,
-                    userImage: userState.image
+                    userImage: userState.image,
+                    id: uid
                 })
                 
                 console.log("post added success")
